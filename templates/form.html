@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post">
+  {{ form.csrf_token }}
+  {% for data in form %}
+  {% if data.label != form.csrf_token %}
+  {{ data.label }}
+  {{ data() }}
+  {% endif %}
+  <br>
+  {% endfor %}
+  {% if form.errors %}
+  <ul>
+    {% for error in form.errors %}<li>{{ error }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+</form>
+{% endblock %}
