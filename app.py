@@ -122,12 +122,13 @@ class myForm(FlaskForm):
         validators=[DataRequired()],
     )
 
-    submit = SubmitField("Submit")
-
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = myForm()
+    for field in form:
+        print(field)
+        print()
     if form.validate_on_submit():
         # do something
         print(form.name.data)
